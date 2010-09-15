@@ -13,9 +13,11 @@ echo CLASSPATH=$CLASSPATH
 #check if the first arg is a file, if so use it as a clj-script
 if [ -f $1 ] 
 then
-  java -server -Xmx1G -cp $CLASSPATH jline.ConsoleRunner clojure.main $@
-  exit 0;
+#  java -server -Xmx1G -cp $CLASSPATH jline.ConsoleRunner clojure.main $@
+    java -Xmx1G -cp $CLASSPATH jline.ConsoleRunner clojure.main $@
+    exit 0;
 fi
 
 #no file found launch repl
-java -server -Xmx1G -cp $CLASSPATH jline.ConsoleRunner clojure.main -r $@
+#java -server -Xmx1G -cp $CLASSPATH jline.ConsoleRunner clojure.main -r $@
+java -Xmx1G -cp $CLASSPATH jline.ConsoleRunner clojure.main -r $@
