@@ -1,0 +1,7 @@
+This project contains assets to ease the execution of clojure scripts in environments.
+
+./clojure    	      -> *nix shell script
+./clojure.bat	      -> Windows batch script
+./.clojure	      -> directory containing default jars (clojure, clojure-contrib, etc.)
+
+The shell scripts will inspect the first commandline argument to determine if the process should be run as a script.  If the first argument is a file, it will be run as a clojrue script, otherwise a REPL will be started.
