@@ -66,6 +66,7 @@
 	</resource>
 	<resource>
 	  <directory>src/main/resources</directory>
+	  <targetPath>${project.build.directory}/.clojure</targetPath>
 	</resource>
       </resources>
       <testResources>

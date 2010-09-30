@@ -1,5 +1,0 @@
-#!/bin/sh
-
-mvn clean package
-cp ./clojure ./target/.clojure/
-cp ./clojure.bat ./target/.clojure/
