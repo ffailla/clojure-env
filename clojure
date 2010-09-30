@@ -19,6 +19,7 @@ then
 fi
 
 #check if the first arg is a file, if so use it as a clj-script
+#java -server -Xmx1G -cp $CLASSPATH jline.ConsoleRunner clojure.main $@`cygpath -wp
 if [ -f $1 ] 
 then
     if [ -d"/cygdrive/c" ]
@@ -27,8 +28,6 @@ then
 	java -Xmx1G -cp `cygpath -wp $CLASSPATH` jline.ConsoleRunner clojure.main $@
 	exit 0;
     fi
-
-#  java -server -Xmx1G -cp $CLASSPATH jline.ConsoleRunner clojure.main $@`cygpath -wp
     java -Xmx1G -cp $CLASSPATH jline.ConsoleRunner clojure.main $@
     exit 0;
 fi
@@ -37,7 +36,7 @@ fi
 #java -server -Xmx1G -cp $CLASSPATH jline.ConsoleRunner clojure.main -r $@
 if [ -d"/cygdrive/c" ]
 then
-  echo "CYGWIN envirnment, changing classpath"
+  echo "CYGWIN environment, changing classpath"
   java -Xmx1G -cp `cygpath -wp $CLASSPATH` jline.ConsoleRunner clojure.main -r $@
   exit 0;
 fi
