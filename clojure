@@ -10,14 +10,35 @@ done
 export CLASSPATH
 echo CLASSPATH=$CLASSPATH
 
+#cygwin ??
+if [ -d"/cygdrive/c" ]
+then
+  echo "CYGWIN envirnment, changing classpath"
+  java -Xmx1G -cp `cygpath -wp $CLASSPATH` jline.ConsoleRunner clojure.main $@
+  exit 0;
+fi
+
 #check if the first arg is a file, if so use it as a clj-script
 if [ -f $1 ] 
 then
-#  java -server -Xmx1G -cp $CLASSPATH jline.ConsoleRunner clojure.main $@
+    if [ -d"/cygdrive/c" ]
+    then
+	echo "CYGWIN envirnment, changing classpath"
+	java -Xmx1G -cp `cygpath -wp $CLASSPATH` jline.ConsoleRunner clojure.main $@
+	exit 0;
+    fi
+
+#  java -server -Xmx1G -cp $CLASSPATH jline.ConsoleRunner clojure.main $@`cygpath -wp
     java -Xmx1G -cp $CLASSPATH jline.ConsoleRunner clojure.main $@
     exit 0;
 fi
 
 #no file found launch repl
 #java -server -Xmx1G -cp $CLASSPATH jline.ConsoleRunner clojure.main -r $@
+if [ -d"/cygdrive/c" ]
+then
+  echo "CYGWIN envirnment, changing classpath"
+  java -Xmx1G -cp `cygpath -wp $CLASSPATH` jline.ConsoleRunner clojure.main -r $@
+  exit 0;
+fi
 java -Xmx1G -cp $CLASSPATH jline.ConsoleRunner clojure.main -r $@
